@@ -6,7 +6,7 @@ abi = JSON.parse(
 VotingContract = web3.eth.contract(abi);
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 contractInstance = VotingContract.at(
-  "0xe387E6d65cFF591df0c0d80a08714f72E6b3c1a1"
+  "0x93A732224F792A78C278D61591C365F6Bc1feA64"
 );
 candidates = [
   "Alson",

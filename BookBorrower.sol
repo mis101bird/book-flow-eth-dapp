@@ -23,35 +23,9 @@ contract BookBorrower {
             bookLocationMap[books[i]] = "bookshelf";
         }
     }
-/*
-    function validBook(bytes32 book) view public returns (bool) {
-        for(uint i = 0; i < bookList.length; i++) {
-            if (bookList[i] == book) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-
-    function validLocation(bytes32 location) view public returns (bool) {
-        for(uint i = 0; i < locationList.length; i++) {
-            if (locationList[i] == location) {
-                return true;
-            }
-        }
-        return false;
-    }
-*/
     function getBookLocation(bytes32 bookName) public returns (bytes32) {
         return bookLocationMap[bookName];
-    }
-
-    function borrowBook(bytes32 book, bytes32 location) public {
-        // require(validLocation(location));
-        // require(validBook(book));
-
-        bookLocationMap[book] = location;
     }
 
     /*
