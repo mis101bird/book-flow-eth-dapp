@@ -4,21 +4,19 @@ var solc = require("solc");
 var path = require("path");
 
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var code = fs.readFileSync(path.resolve(__dirname, "BookBorrower.sol"), "utf8");
+var code = fs.readFileSync(path.resolve(__dirname, "BookBorrow.sol"), "utf8");
 var compiledCode = solc.compile(code, 1);
 
-var abiDefinition = JSON.parse(
-  compiledCode.contracts[":BookBorrower"].interface
-);
-var byteCode = compiledCode.contracts[":BookBorrower"].bytecode;
+var abiDefinition = JSON.parse(compiledCode.contracts[":BookBorrow"].interface);
+var byteCode = compiledCode.contracts[":BookBorrow"].bytecode;
 let votingContract;
 
 const execute = async () => {
   try {
     votingContract = await web3.eth.contract(abiDefinition);
     return await votingContract.new(
-      ["Book1"],
-      ["Sam", "Jack", "bookshelf"],
+      ["Book1", "Book2"],
+      ["Sam", "Tom"],
       {
         data: byteCode,
         from: web3.eth.accounts[0],
@@ -39,13 +37,12 @@ const execute = async () => {
             const contractInstance = votingContract.at(
               deployedContract.address
             );
-            console.log(contractInstance);
+
             console.log(
-              "Book1 place:",
-              web3.toAscii(
-                contractInstance.getBookLocation("Book1", {
-                  from: web3.eth.accounts[0],
-                  gas: 4700000
+              "Book1:",
+              web3.toUtf8(
+                contractInstance.getLocation("Book1", {
+                  from: web3.eth.accounts[0]
                 })
               )
             );
