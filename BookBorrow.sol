@@ -33,9 +33,9 @@ contract BookBorrow {
 
     // This function returns the total votes a candidate has received so far
     
-    // function totalVotesFor(bytes32 candidate) view public returns (bytes32) {
-    //     return bookLocationMap[candidate];
-    // }
+    function borrowBook(bytes32 book, bytes32 location) public {
+        bookLocationMap[book] = location;
+    }
 
     // This function increments the vote count for the specified candidate. This
     // is equivalent to casting a vote

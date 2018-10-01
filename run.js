@@ -37,7 +37,9 @@ const execute = async () => {
             const contractInstance = votingContract.at(
               deployedContract.address
             );
-
+            contractInstance.borrowBook("Book1", "Tom", {
+              from: web3.eth.accounts[0]
+            });
             console.log(
               "Book1:",
               web3.toUtf8(
