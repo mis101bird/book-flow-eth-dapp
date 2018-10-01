@@ -8,7 +8,7 @@ VotingContract = web3.eth.contract(abi);
 contractInstance = VotingContract.at(
   "0x8e3a0b77af7feb808719ab7d4e7e519f97a35a9b"
 );
-books = ["Book1"];
+books = ["Book1", "Book2", "Book3", "Book4"];
 
 function borrowBook() {
   bookName = $("#bookName").val();
