@@ -28,6 +28,23 @@ function borrowBook() {
   );
 }
 
+function returnBook() {
+  bookName = $("#bookName").val();
+
+  contractInstance.borrowBook(
+    bookName,
+    "bookshelf",
+    {
+      from: web3.eth.accounts[0]
+    },
+    function() {
+      $("#" + bookName).html(
+        web3.toUtf8(contractInstance.getLocation.call(bookName).toString())
+      );
+    }
+  );
+}
+
 $(document).ready(function() {
   for (var i = 0; i < books.length; i++) {
     let book = books[i];
