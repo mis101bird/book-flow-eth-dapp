@@ -34,6 +34,7 @@ contract BookBorrow {
     // This function returns the total votes a candidate has received so far
     
     function borrowBook(bytes32 book, bytes32 location) public {
+        require(validLocation(location));
         bookLocationMap[book] = location;
     }
 
@@ -43,14 +44,14 @@ contract BookBorrow {
         return bookLocationMap[book];
     }
 
-/*
-    function validCandidate(bytes32 candidate) view public returns (bool) {
-        for(uint i = 0; i < candidateList.length; i++) {
-            if (candidateList[i] == candidate) {
+
+    function validLocation(bytes32 location) view public returns (bool) {
+        for(uint i = 0; i < locationList.length; i++) {
+            if (locationList[i] == location) {
                 return true;
             }
         }
         return false;
     }
-    */
+    
 }

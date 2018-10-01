@@ -1,12 +1,12 @@
 web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
 console.log("web3.isConnected()", web3.isConnected());
 abi = JSON.parse(
-  '[{"constant":false,"inputs":[{"name":"book","type":"bytes32"},{"name":"location","type":"bytes32"}],"name":"borrowBook","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"book","type":"bytes32"}],"name":"getLocation","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"locationList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"bookLocationMap","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"bookList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"books","type":"bytes32[]"},{"name":"locations","type":"bytes32[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]'
+  '[{"constant":false,"inputs":[{"name":"book","type":"bytes32"},{"name":"location","type":"bytes32"}],"name":"borrowBook","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"book","type":"bytes32"}],"name":"getLocation","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"locationList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"bytes32"}],"name":"bookLocationMap","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"bookList","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"location","type":"bytes32"}],"name":"validLocation","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"books","type":"bytes32[]"},{"name":"locations","type":"bytes32[]"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"}]'
 );
 VotingContract = web3.eth.contract(abi);
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 contractInstance = VotingContract.at(
-  "0x373b7471ef25fe93074aab9fb31a071d82c83dd8"
+  "0xf5fe82453ddc127554f68e9594e3c08c69ee0372"
 );
 books = ["Book1", "Book2", "Book3", "Book4"];
 
