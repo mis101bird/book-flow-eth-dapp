@@ -6,7 +6,7 @@ abi = JSON.parse(
 VotingContract = web3.eth.contract(abi);
 // In your nodejs console, execute contractInstance.address to get the address at which the contract is deployed and change the line below to use your deployed address
 contractInstance = VotingContract.at(
-  "0x8e3a0b77af7feb808719ab7d4e7e519f97a35a9b"
+  "0x373b7471ef25fe93074aab9fb31a071d82c83dd8"
 );
 books = ["Book1", "Book2", "Book3", "Book4"];
 

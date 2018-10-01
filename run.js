@@ -8,7 +8,6 @@ var code = fs.readFileSync(path.resolve(__dirname, "BookBorrow.sol"), "utf8");
 var compiledCode = solc.compile(code, 1);
 
 var abiDefinition = JSON.parse(compiledCode.contracts[":BookBorrow"].interface);
-console.log(compiledCode.contracts[":BookBorrow"].interface);
 var byteCode = compiledCode.contracts[":BookBorrow"].bytecode;
 let votingContract;
 
@@ -16,8 +15,8 @@ const execute = async () => {
   try {
     votingContract = await web3.eth.contract(abiDefinition);
     return await votingContract.new(
-      ["Book1", "Book2"],
-      ["Sam", "Tom"],
+      ["Book1", "Book2", "Book3", "Book4"],
+      ["Sam", "Tom", "Mary", "bookshelf"],
       {
         data: byteCode,
         from: web3.eth.accounts[0],
