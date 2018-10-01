@@ -4,40 +4,21 @@ var solc = require("solc");
 var path = require("path");
 
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var code = fs.readFileSync(path.resolve(__dirname, "Voting.sol"), "utf8");
+var code = fs.readFileSync(path.resolve(__dirname, "BookBorrower.sol"), "utf8");
 var compiledCode = solc.compile(code, 1);
 
-var abiDefinition = JSON.parse(compiledCode.contracts[":Voting"].interface);
-var byteCode = compiledCode.contracts[":Voting"].bytecode;
+var abiDefinition = JSON.parse(
+  compiledCode.contracts[":BookBorrower"].interface
+);
+var byteCode = compiledCode.contracts[":BookBorrower"].bytecode;
 let votingContract;
 
 const execute = async () => {
   try {
     votingContract = await web3.eth.contract(abiDefinition);
     return await votingContract.new(
-      [
-        "Alson",
-        "Ben",
-        "Chary",
-        "Chris",
-        "Cloe",
-        "Daly",
-        "Eric",
-        "Grace",
-        "Han-Qi-Wang",
-        "Ian-Su",
-        "Jim-Ho",
-        "Joanna",
-        "Joey",
-        "Kate",
-        "Meng-Gen",
-        "Randy",
-        "Samuel",
-        "Timo",
-        "Titan",
-        "Tony",
-        "Vicky"
-      ],
+      ["Book1"],
+      ["Sam", "Jack", "bookshelf"],
       {
         data: byteCode,
         from: web3.eth.accounts[0],
@@ -58,12 +39,15 @@ const execute = async () => {
             const contractInstance = votingContract.at(
               deployedContract.address
             );
-            contractInstance.voteForCandidate("Alson", {
-              from: web3.eth.accounts[0]
-            });
+            console.log(contractInstance);
             console.log(
-              "Alson voting:",
-              contractInstance.totalVotesFor("Alson").toString()
+              "Book1 place:",
+              web3.toAscii(
+                contractInstance.getBookLocation("Book1", {
+                  from: web3.eth.accounts[0],
+                  gas: 4700000
+                })
+              )
             );
           }
         }

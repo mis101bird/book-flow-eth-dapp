@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 // We have to specify what version of compiler this code will compile with
 
 contract BookBorrower {
-    mapping (bytes32 => bytes32) public bookLocationMap;
+    mapping (bytes32 => uint8) public bookLocationMap;
     bytes32[] public bookList;
     bytes32[] public locationList;
     
@@ -20,11 +20,11 @@ contract BookBorrower {
 
         
         for(uint i = 0; i < books.length; i++) {
-            bookLocationMap[books[i]] = "bookshelf";
+            bookLocationMap[books[i]] = 0;
         }
     }
 
-    function getBookLocation(bytes32 bookName) public returns (bytes32) {
+    function getBookLocation(bytes32 bookName) public returns (uint8) {
         return bookLocationMap[bookName];
     }
 
