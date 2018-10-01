@@ -8,6 +8,7 @@ var code = fs.readFileSync(path.resolve(__dirname, "BookBorrow.sol"), "utf8");
 var compiledCode = solc.compile(code, 1);
 
 var abiDefinition = JSON.parse(compiledCode.contracts[":BookBorrow"].interface);
+console.log(compiledCode.contracts[":BookBorrow"].interface);
 var byteCode = compiledCode.contracts[":BookBorrow"].bytecode;
 let votingContract;
 
