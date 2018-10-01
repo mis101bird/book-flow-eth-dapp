@@ -21,9 +21,15 @@ function borrowBook() {
       from: web3.eth.accounts[0]
     },
     function() {
-      $("#" + bookName).html(
-        web3.toUtf8(contractInstance.getLocation.call(bookName).toString())
+      var newlocation = web3.toUtf8(
+        contractInstance.getLocation.call(bookName).toString()
       );
+      if (newlocation !== $("#locationName").val()) {
+        $("#error").text("Please check the location again...");
+      } else {
+        $("#error").text("");
+      }
+      $("#" + bookName).html(newlocation);
     }
   );
 }
